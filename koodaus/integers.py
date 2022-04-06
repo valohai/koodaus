@@ -1,6 +1,6 @@
 import string
 
-keyspace = (string.digits + string.ascii_letters)
+keyspace = string.digits + string.ascii_letters
 
 
 def encode_int(value, keyspace=keyspace):
@@ -16,13 +16,13 @@ def encode_int(value, keyspace=keyspace):
     :return: Encoded string.
     """
     if value < 0:
-        raise ValueError('value must be positive')
+        raise ValueError("value must be positive")
     value = int(value)
     out = []
     while value:
         value, digit = divmod(value, len(keyspace))
         out.append(keyspace[digit])
-    return ''.join(out[::-1])
+    return "".join(out[::-1])
 
 
 def decode_int(str, keyspace=keyspace):
