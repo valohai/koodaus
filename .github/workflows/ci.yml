@@ -29,7 +29,4 @@ jobs:
         with:
           python-version: "3.10"
       - uses: actions/checkout@v2
-      - run: pip install -e .[test,lint]
-      - run: flake8 .
-      - run: isort .
-      - run: mypy --strict --show-error-codes .
+      - uses: pre-commit/action@v3.0.0

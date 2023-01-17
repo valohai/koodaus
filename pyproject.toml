@@ -1,6 +1,52 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "koodaus"
+dynamic = ["version"]
+description = "Encoding/decoding library for Python"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.6"
+authors = [
+    { name = "Valohai", email = "info@valohai.com" },
 ]
-build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+
+[project.urls]
+Homepage = "https://github.com/valohai/koodaus"
+
+[tool.hatch.version]
+path = "koodaus/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/koodaus",
+]
+
+[tool.ruff]
+ignore = []
+line-length = 79
+select = [
+    "C",
+    "E",
+    "F",
+    "I",
+    "W",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+norecursedirs = [".git", "venv*", ".tox"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
